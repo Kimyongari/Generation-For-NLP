@@ -38,16 +38,42 @@ Q: 다음 내용에 대해 알맞는 것을 고르시오.
 <지문>
 <선지>
 A: 위 내용은 임진왜란에 관련된 내용이므로 3번이 알맞는 선지입니다.
-📚 데이터 증강
+
+```
+### 📚 데이터 증강
 KorQuAD 기반 데이터 증강
 KorQuAD 1.0의 역사 관련 지문을 추출.
 GPT-4o API를 활용하여 데이터를 증강.
 Fine-Tuning 결과:
 3B 이하 모델: 성능 향상 미미.
 8B 이상 모델: 약 3% 성능 향상.
-```
 
-## 4. Team
+### 🛠️ Corpus 구축 및 RAG 연결
+Corpus 구축
+KeyBERT를 활용하여 Train 데이터의 Anchor Text 추출.
+추출한 키워드와 일치하는 Korean Wiki 문서의 Title 기반으로 Corpus 생성.
+RAG 연결
+구축한 Corpus를 RAG(Retrieval-Augmented Generation) 방식에 연결.
+결과:
+성능이 오히려 하락, 추가적인 최적화 필요.
+
+
+## 4. 결과
+### 📊 결과 비교
+
+| **Hard Voting/Model**                     | **Eval_ACC** | **ACC (public)** | **ACC (private)** |
+|-------------------------------------------|---------------|------------|--------------|
+| **Exaone + Qwen + Llama (Hard Voting)**   | 0.6728        | 0.6437     | -            |
+| **LGAI-EXAONE/EXAONE-3.0-7.8B-Instruct**  | 0.5500        | 0.6498     | 0.6253       |
+| **MLP-KTLim/llama-3-Korean-Bllossom-8B**  | 0.4800        | 0.6244     | 0.5839       |
+| **Qwen 2.5 instruct**                     | 0.6400        | 0.6106     | 0.5816       |
+| **meta-llama/Llama-3.2-8B-Instruct**      | 0.4400        | 0.5806     | 0.5655       |
+| **CarrotAI/Llama-3.2-Rabbit-Ko-3B-Instruct** | 0.7300      | 0.5668     | 0.5438       |
+| **Bllossom/llama-3.2-Korean-Bllossom-3B** | 0.6300        | 0.5392     | 0.5103       |
+| **beomi/gemma-ko-2b (Baseline)**          | 0.4900        | 0.4055     | 0.4069       |
+
+---
+## 5. Team
 <table>
     <tbody>
         <tr>
@@ -96,4 +122,10 @@ Fine-Tuning 결과:
 
 <br>
 
-## Reference
+## 📖 Reference
+이 프로젝트는 다음을 참고하여 개발되었습니다:
+KorQuAD 1.0 데이터셋
+KeyBERT: Minimal Keyword Extraction
+Hugging Face Transformers
+GPT-4o Mini API Documentation
+RAG: Retrieval-Augmented Generation
