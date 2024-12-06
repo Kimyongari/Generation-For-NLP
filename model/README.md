@@ -35,9 +35,9 @@ model.make_dataset()
  출력 형태 : [정답에 대한 근거] # [정답 번호]
  
 ### 주의사항
-model.inference(mode = 'generative_base')만 사용할 것
-inference 후 model.results를 치면 generate 된 결과물이 나옴.
-결과물을 보고 알아서 정답 번호를 유추할 것.
+model.inference(mode = 'generative_base')만 사용할 것  
+inference 후 model.results를 치면 generate 된 결과물이 나옴.  
+결과물을 보고 알아서 정답 번호를 유추할 것.  
 
 #### 예시
 ```python
